@@ -12,8 +12,16 @@ class SFL_batch(SFL):
         super().__init__(model, input_size)
 
     def generate_batch_images(self, image_folder, N, s, p1, batch_size=50):
+        # Validate the image folder
+        if not os.path.exists(image_folder):
+            raise ValueError(f"The specified image folder does not exist: {image_folder}")
         # Get all image files from the folder
         image_files = [f for f in os.listdir(image_folder) if f.lower().endswith(('.png', '.jpg', '.jpeg'))]
+
+        # Check if the folder is empty
+        if not image_files:
+            raise ValueError(f"The specified image folder is empty or contains no valid image files: {image_folder}")
+        
         all_masks = []
         all_sampled_tensors = []
         target_list = []
@@ -73,6 +81,9 @@ class SFL_batch(SFL):
             all_sampled_tensors.append(sampled_tensor)
 
         # Stack results from all images
-        combined_masks = torch.cat(all_masks, dim=0)
-        combined_sampled_tensors = torch.cat(all_sampled_tensors, dim=0)
+        try:
+            combined_masks = torch.cat(all_masks, dim=0)
+            combined_sampled_tensors = torch.cat(all_sampled_tensors, dim=0)
+        except RuntimeError as e:
+            raise ValueError("Error combining processed images. This might be due to an incorrect path.") from e
         return combined_masks, combined_sampled_tensors, target_list 
