@@ -18,15 +18,6 @@ python explainer.py path_to_image
 ```sh
 python explainer.py path_to_folder
 ```
-This command create a folder containing the saliency map explanations for the most relevant pixels for the top classification.
-# How does it work?
-## Masking Process
-
-## Mutant Generation
-
-## Computing Ranking Procedure
-
-### Set of Parameters
 ### Fault Localisation 
 
 <p align="center">
