@@ -14,9 +14,14 @@ In order to measure my implementation, I used the Causal Metrics introduced in R
 
 # How to use it?
 ### To explain a single image:
-
+```sh
+python explainer.py path_to_image
+```
 ### To explain a batch of images:
-
+```sh
+python explainer.py path_to_folder
+```
+This command create a folder containing the saliency map explanations for the most relevant pixels for the top classification.
 # How does it work?
 ## Masking Process
 
