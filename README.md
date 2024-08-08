@@ -9,9 +9,6 @@ To measure the effectiveness of my implementation, I used the Causal Metrics int
   <img src=https://github.com/eaguaida/RISE-SFL/blob/main/images/results.png?raw=true />
 </p>
 
-In order to measure my implementation, I used the Causal Metrics introduced in RISE and an implementation of Tristan saliency maps metric in
-
-
 # How to use it?
 ### To explain a single image:
 ```sh
