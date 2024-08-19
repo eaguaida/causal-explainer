@@ -17,10 +17,10 @@ def calculate_all_scores(self, confidence_scores, img, masks, N):
         'Ef': self.Ef,
         'Np': self.Np,
         'Nf': self.Nf,
-        'ochiai': ochiai_scores,
-        'tarantula': tarantula_scores,
-        'zoltar': zoltar_scores,
-        'wong1': wong1_scores
+        'ochiai':  self.ochiai_array,
+        'tarantula': self.tarantula_array,
+        'zoltar': self.zoltar_array,
+        'wong1': self.wong1_array
     }
 
     return self.scores_dict
