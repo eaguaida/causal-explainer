@@ -28,6 +28,7 @@ class SFL_batch(SFL):
         for img_file in tqdm(image_files, desc="Processing images"):
             # Load and preprocess the image using read_tensor
             img_path = os.path.join(image_folder, img_file)
+            print(img_path)
             img_tensor = utils.read_tensor(img_path).to(self.device)
             with torch.no_grad():
                 output = self.model(img_tensor)
