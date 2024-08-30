@@ -1,4 +1,7 @@
-# Causal Explanations using Statistical Fault Localisation
+# Causal Framework 
+
+
+## Explaning Image Classifiers
 
 <p align="center">
   <img src=https://github.com/eaguaida/causal-explainer/blob/main/images/explainer_blueprint.png?raw=true />
@@ -13,11 +16,7 @@ python explainer.py path_to_image
 ```sh
 python explainer.py path_to_folder
 ```
-### Fault Localisation 
 
-<p align="center">
-  <img src=https://github.com/eaguaida/RISE-SFL/blob/main/images/formulas.png?raw=true />
-</p>
 
 Disclosure:
 
