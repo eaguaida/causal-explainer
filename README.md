@@ -49,9 +49,44 @@ Models supported:
 
 Iris Dataset:
 
+```sh
+#Loading libraries
+from sklearn import datasets
+from sklearn.ensemble import RandomForestClassifier
+from tabular_explainer import *
+#Loading dataset
+iris = datasets.load_iris()
+iris = load_iris()
+X, y = iris.data, iris.target
+class_names = iris.target_names
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+#Train model
+clf = RandomForestClassifier(n_estimators=100, max_depth=None, min_samples_split=2, random_state=0)
+clf.fit(X_train, y_train)
+explanation = explain_tabular(clf, X_test)
+```
+### Plotting only Wong-1 measure
+
+```sh
+plot_bar(explanation, view='Raw', measure='Wong1')
+```
+<img src="https://github.com/eaguaida/causal-explainer/blob/main/images/Wong1_raw_importance.png?raw=true" width="500" height="300">
+
+### Plotting all measures
+
+```sh
+plot_bar(explanation, view='Raw', measure='All')
+```
 | Ochiai | Zoltar | Tarantula | Wong-1 |
 |-------|---------|-------------|--------|
 | <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/Ochiai_raw_importance.png?raw=true" width="150" height="150"> | <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/Zoltar_raw_importance.png?raw=true" width="150" height="150"> | <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/Tarantula_raw_importance.png?raw=true" width="150" height="150"> | <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/Wong1_raw_importance.png?raw=true" width="150" height="150"> |
+
+Diabetes Dataset:
+
+```sh
+python explainer.py path_to_image
+```
 
 Disclosure:
 
