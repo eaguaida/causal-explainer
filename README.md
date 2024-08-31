@@ -49,7 +49,7 @@ In this example we can try to explain the model's prediction on the Iris dataset
 ```sh
 #Loading libraries
 from sklearn import datasets
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.tree import DecisionTreeClassifier
 from tabular_explainer import *
 #Loading dataset
 iris = datasets.load_iris()
@@ -59,7 +59,7 @@ class_names = iris.target_names
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 #Train model
-clf = RandomForestClassifier(n_estimators=100, max_depth=None, min_samples_split=2, random_state=0)
+clf = DecisionTreeClassifier(random_state=0)
 clf.fit(X_train, y_train)
 explanation = explain_tabular(clf, X_test)
 ```
@@ -80,7 +80,7 @@ plot_bar(explanation, view='Raw', measure='All')
 | <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/Ochiai_raw_importance.png?raw=true" width="150" height="150"> | <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/Zoltar_raw_importance.png?raw=true" width="150" height="150"> | <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/Tarantula_raw_importance.png?raw=true" width="150" height="150"> | <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/Wong1_raw_importance.png?raw=true" width="150" height="150"> |
 
 ### Diabetes Dataset:
-
+While the performance of the explanation model is still experimental, it already achieves the purpose of demonstrating if a model is biased towards a specific feature. Here its shown that the model is NOT biased towards the 'sex' feature for example.
 ```sh
 #Loading libraries
 import numpy as np
