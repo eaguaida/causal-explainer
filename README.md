@@ -2,11 +2,11 @@
 
 ## Method overview
 
-This is a novel XAI framework used to explain Machine Learning models and DNNs, it is an unified approach combining [RISE](https://arxiv.org/abs/1806.07421), [DeepCover](https://arxiv.org/pdf/1908.02374) and [Spectrum-based Software Fault Localization](https://arxiv.org/abs/2206.08345). It is based on the idea that to achieve a good explanation we need to create a "Test Suit", which is a balanced dataset consisting of correct/incorrect versions of the input that have been manipulated in any sort of way, we simply named "mutant" when referring to these manipulated inputs.
+This is a novel XAI framework used to explain Machine Learning models and DNNs. It is a unified approach combining [RISE](https://arxiv.org/abs/1806.07421), [DeepCover](https://arxiv.org/pdf/1908.02374), and [Spectrum-based Software Fault Localization](https://arxiv.org/abs/2206.08345). It is based on the idea that to achieve a good explanation, we need to create a "Test Suite," which is a balanced dataset consisting of correct/incorrect versions of the input that have been manipulated in various ways. We simply call these manipulated inputs "mutants."
 
-We create this test suit by generating masks that are applied on the input, these mask are basically a collection of values ranging from 0 to 1, Ex, for an image, when this mask is applied they modify the original input by multiplying the values of the pixels by the mask. After generating this dataset, we generated 4 variables that count for how each feature was perturbed (activated/non activated), to then split the test suit into failing/passing mutants. We then proceed to throw these variables into the SFL formulas to get the final score for each feature. 
+We create this test suite by generating masks that are applied to the input. These masks are essentially collections of values ranging from 0 to 1. For example, for an image, when a mask is applied, it modifies the original input by multiplying the values of the pixels by the mask. After generating this dataset, we create 4 variables that count how each feature was perturbed (activated/non-activated), and then split the test suite into failing/passing mutants. We then proceed to input these variables into the SFL formulas to get the final score for each feature.
 
-For Image Classifiers, we don't measure features but pixels importance, so the output is a Saliency Map of the pixels that are most important for the model's prediction.
+For Image Classifiers, we don't measure feature importance but pixel importance, so the output is a Saliency Map of the pixels that are most important for the model's prediction.
 
 ## Explaning Image Classifiers
 
@@ -44,7 +44,7 @@ Models supported:
 
 ### Iris Dataset:
 
-In this example we can try to explain the model's prediction on the Iris dataset, the code can be found [here](https://github.com/eaguaida/causal-explainer/blob/main/tabular-explainer/iris_data_explanations.ipynb). 
+In this example, we can explain the model's prediction on the Iris dataset. The code for this example can be found [here](https://github.com/eaguaida/causal-explainer/blob/main/tabular-explainer/iris_data_explanations.ipynb).
 
 ```sh
 #Loading libraries
@@ -80,7 +80,8 @@ plot_bar(explanation, view='Raw', measure='All')
 | <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/Ochiai_raw_importance.png?raw=true" width="150" height="150"> | <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/Zoltar_raw_importance.png?raw=true" width="150" height="150"> | <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/Tarantula_raw_importance.png?raw=true" width="150" height="150"> | <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/Wong1_raw_importance.png?raw=true" width="150" height="150"> |
 
 ### Diabetes Dataset:
-While the performance of the explanation model is still experimental, it already achieves the purpose of demonstrating if a model is biased towards a specific feature. Here its shown that the model is NOT biased towards the 'sex' feature for example.
+
+While the performance of the explanation model is still experimental, it already achieves the purpose of demonstrating if a model is biased towards a specific feature. Here it's shown that the model is NOT biased towards the 'sex' feature, for example.
 ```sh
 #Loading libraries
 import numpy as np
