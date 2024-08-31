@@ -25,10 +25,7 @@ python explainer.py path_to_folder
 
 I've created a tutorial explaining ResNet50 [here](https://github.com/eaguaida/causal-explainer/blob/main/tutorial_resnet.ipynb).
 
-
-To generate a saliency map for model's prediction, RISE queries black-box model on multiple randomly masked versions of input.
-After all the queries are done we average all the masks with respect to their scores to produce the final saliency map. The idea behind this is that whenever a mask preserves important parts of the image it gets higher score, and consequently has a higher weight in the sum.
-
+<img src="https://github.com/eaguaida/causal-explainer/blob/main/images/explainer_blueprint.png?raw=true">
 
 ### Results
 | Label | Ochiai | Zoltar | Tarantula | Wong-1 |
@@ -100,4 +97,5 @@ explanation = explain_tabular(rforest, X_test)
 plot_bar(explanation, view='Raw', measure='Wong1')
 ```
 <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/diabetes_wong1.png?raw=true" width="500" height="300">
-Disclosure:
+
+
