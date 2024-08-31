@@ -1,8 +1,6 @@
 # Causal Framework 
 
 
-## Explaning Image Classifiers
-
 # How to use it?
 ### To explain a single image:
 ```sh
@@ -13,12 +11,16 @@ python explainer.py path_to_image
 python explainer.py path_to_folder
 ```
 
-## Classification:
+## Image Classification:
 
 | Label | Ochiai | Zoltar | Tarantula | Wong-1 |
 |----------|-------|---------|-------------|--------|
-| Dog | ![](https://github.com/eaguaida/causal-explainer/blob/main/images/ochiai_dog.png?raw=true) | ![](https://github.com/eaguaida/causal-explainer/blob/main/images/zoltar_dog.png?raw=true) | ![](https://github.com/eaguaida/causal-explainer/blob/main/images/tarantula_dog.png?raw=true) | ![](https://github.com/eaguaida/causal-explainer/blob/main/images/wong1_dog.png?raw=true) |
-| Cat | ![](https://github.com/eaguaida/causal-explainer/blob/main/images/cat_ochiai.png?raw=true) | ![](https://github.com/eaguaida/causal-explainer/blob/main/images/cat_zoltar.png?raw=true) | ![](https://github.com/eaguaida/causal-explainer/blob/main/images/cat_tarantula.png?raw=true) | ![](https://github.com/eaguaida/causal-explainer/blob/main/images/cat_wong1.png?raw=true) |
+| Dog | <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/ochiai_dog.png?raw=true" width="200" height="200"> | <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/zoltar_dog.png?raw=true" width="200" height="200"> | <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/tarantula_dog.png?raw=true" width="200" height="200"> | <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/wong1_dog.png?raw=true" width="200" height="200"> |
+| Cat | <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/cat_ochiai.png?raw=true" width="200" height="200"> | <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/cat_zoltar.png?raw=true" width="200" height="200"> | <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/cat_tarantula.png?raw=true" width="200" height="200"> | <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/cat_wong1.png?raw=true" width="200" height="200"> |
+
+## Tabular Data:
+
+
 
 Disclosure:
 
