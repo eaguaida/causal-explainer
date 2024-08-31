@@ -51,7 +51,7 @@ Iris Dataset:
 
 | Ochiai | Zoltar | Tarantula | Wong-1 |
 |-------|---------|-------------|--------|
-| <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/ochiai_dog.png?raw=true" width="130" height="130"> | <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/zoltar_dog.png?raw=true" width="130" height="130"> | <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/tarantula_dog.png?raw=true" width="130" height="130"> | <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/wong1_dog.png?raw=true" width="130" height="130"> |
+| <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/Ochiai_raw_importance.png?raw=true" width="130" height="130"> | <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/Zoltar_raw_importance.png?raw=true" width="130" height="130"> | <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/Tarantula_raw_importance.png?raw=true" width="130" height="130"> | <img src="https://github.com/eaguaida/causal-explainer/blob/main/images/Wong1_raw_importance.png?raw=true" width="130" height="130"> |
 
 Disclosure:
 
