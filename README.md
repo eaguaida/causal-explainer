@@ -3,10 +3,6 @@
 
 ## Explaning Image Classifiers using 
 
-<p align="center">
-  <img src=https://github.com/eaguaida/causal-explainer/blob/main/images/explainer_blueprint.png?raw=true />
-</p>
-
 # How to use it?
 ### To explain a single image:
 ```sh
