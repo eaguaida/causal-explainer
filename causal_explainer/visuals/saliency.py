@@ -6,11 +6,18 @@ from PIL import Image
 
 class SaliencyMapVisualizer:
     def __init__(self, img_path):
-        self.original_image = Image.open(img_path).resize((224, 224)).convert('L')
-        self.original_image_array = np.array(self.original_image)
+        self.original_image = Image.open(img_path).convert('L')
+
+    def _infer_shape(self, dataset):
+        if not dataset:
+            raise ValueError("Dataset must not be empty.")
+
+        max_row = max(pixel['position'][0] for pixel in dataset)
+        max_col = max(pixel['position'][1] for pixel in dataset)
+        return max_row + 1, max_col + 1
 
     def _build_score_grids(self, dataset):
-        H, W = (224, 224)
+        H, W = self._infer_shape(dataset)
         scores = {
             'Ep': np.zeros((H, W)),
             'Ef': np.zeros((H, W)),
@@ -24,7 +31,7 @@ class SaliencyMapVisualizer:
 
         for pixel in dataset:
             i, j = pixel['position']
-            for score_type in scores.keys():
+            for score_type in scores:
                 scores[score_type][i, j] = pixel[score_type]
 
         scores['ochiai'] = 1 - scores['ochiai']
@@ -35,14 +42,16 @@ class SaliencyMapVisualizer:
         return scores
 
     def _select_scores(self, scores, ins):
-        if ins.lower() == 'all':
+        key = ins.lower()
+        if key == 'all':
             return list(scores.keys())
-        elif ins.lower() in scores:
-            return [ins.lower()]
-        else:
-            return ['tarantula', 'ochiai', 'zoltar', 'wong1']
+        if key in scores:
+            return [key]
+        return ['tarantula', 'ochiai', 'zoltar', 'wong1']
 
     def _plot_scores(self, scores, plot_scores):
+        height, width = next(iter(scores.values())).shape
+        original_image_array = np.array(self.original_image.resize((width, height)))
         num_plots = len(plot_scores)
         if num_plots == 1:
             fig, ax = plt.subplots(figsize=(5, 4))
@@ -58,7 +67,7 @@ class SaliencyMapVisualizer:
 
         for idx, score_type in enumerate(plot_scores):
             current_ax = axes_list[idx]
-            current_ax.imshow(self.original_image_array, cmap='gray', alpha=1)
+            current_ax.imshow(original_image_array, cmap='gray', alpha=1)
             im = current_ax.imshow(scores[score_type], cmap=cmap, alpha=0.5)
             current_ax.set_title(score_type.capitalize())
             current_ax.axis('off')

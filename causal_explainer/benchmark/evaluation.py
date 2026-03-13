@@ -24,8 +24,15 @@ KERN = gkern(KLEN, NSIG)
 
 def blur_image(x):
     """Blur image using Gaussian kernel (PyTorch only)."""
-    kern_torch = torch.from_numpy(KERN).unsqueeze(0).unsqueeze(0).repeat(3, 1, 1, 1)
-    return torch.nn.functional.conv2d(x, kern_torch, padding=KLEN // 2, groups=3)
+    channels = x.shape[1]
+    kern_torch = (
+        torch.from_numpy(KERN)
+        .to(device=x.device, dtype=x.dtype)
+        .unsqueeze(0)
+        .unsqueeze(0)
+        .repeat(channels, 1, 1, 1)
+    )
+    return torch.nn.functional.conv2d(x, kern_torch, padding=KLEN // 2, groups=channels)
 
 
 def auc(arr):
@@ -75,7 +82,6 @@ class CausalMetric:
 
         for i in range(n_steps + 1):
             pred = self.model(start)
-            pr, cl = torch.topk(pred, 2)
             scores[i] = pred[0, c].cpu().numpy()
 
             if i < n_steps:

@@ -1,5 +1,4 @@
 import torch
-import math
 
 from causal_explainer.sfl.formulas.fault_localization_metrics import FaultLocalizationMetrics
 from causal_explainer.utils import get_device
@@ -27,18 +26,17 @@ class RelevanceScore:
         sampled_tensor = sampled_tensor.to(device)
 
         all_indices = torch.arange(N, device=device)
-        pass_indices = all_indices[all_indices % 2 != (N % 2)]
-        fail_indices = all_indices[all_indices % 2 == (N % 2)]
+        pass_indices = all_indices[all_indices % 2 == 0]
+        fail_indices = all_indices[all_indices % 2 == 1]
 
-        confidence_scores = torch.tensor(confidence_scores, dtype=torch.float32, device=device)
+        confidence_scores = torch.as_tensor(confidence_scores, dtype=torch.float32, device=device)
         good_scores, fail_scores = confidence_scores[::2], confidence_scores[1::2]
 
-        m = math.ceil(N / 2)
-        goodscalar = good_scores.view(m, 1, 1, 1)
-        badscalar = fail_scores.view(m, 1, 1, 1)
+        goodscalar = good_scores.view(good_scores.shape[0], 1, 1, 1)
+        badscalar = fail_scores.view(fail_scores.shape[0], 1, 1, 1)
 
-        executed_tensors = mask
-        not_executed_tensors = 1 - mask
+        executed_tensors = mask.to(device)
+        not_executed_tensors = 1 - executed_tensors
 
         e_pass_tensors = executed_tensors[pass_indices] * goodscalar
         e_fail_tensors = executed_tensors[fail_indices] * badscalar
