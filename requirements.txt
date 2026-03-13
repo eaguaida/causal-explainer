@@ -1,11 +1,8 @@
+torch
+torchvision
 numpy
 matplotlib
 tqdm
-torch
-torchvision
-ipywidgets
-tensorflow
 Pillow
-keras
-shap
-scikit-image
+ipywidgets
+scipy
