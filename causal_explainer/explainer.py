@@ -80,7 +80,7 @@ def main():
     args = parser.parse_args()
 
     device = get_device()
-    model = models.resnet50(True)
+    model = models.resnet50(weights=models.ResNet50_Weights.DEFAULT)
     model = nn.Sequential(model, nn.Softmax(dim=1))
     model = model.eval().to(device)
     for p in model.parameters():
